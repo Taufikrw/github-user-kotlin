@@ -20,16 +20,16 @@ class MainViewModel: ViewModel() {
 
     companion object {
         private const val TAG = "MainViewModel"
-        private const val QUERY = "taufik"
+        var QUERY = "taufik"
     }
 
     init {
-        setSearchUsers()
+        setSearchUsers(QUERY)
     }
 
-    private fun setSearchUsers() {
+    fun setSearchUsers(query: String = "taufik") {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getGithubUsers(QUERY)
+        val client = ApiConfig.getApiService().getGithubUsers(query)
         client.enqueue(object : Callback<GithubResponse> {
             override fun onResponse(
                 call: Call<GithubResponse>,

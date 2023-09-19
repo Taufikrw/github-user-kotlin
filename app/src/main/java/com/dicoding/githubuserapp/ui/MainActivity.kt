@@ -34,6 +34,21 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.listUser.observe(this) { users ->
             setSearchUsers(users)
         }
+
+        with(binding) {
+            svUser.setupWithSearchBar(sbUser)
+            svUser.editText.setOnEditorActionListener { textView, actionId, event ->
+                sbUser.text = svUser.text
+                svUser.hide()
+                if (sbUser.text.toString() != "") {
+                    mainViewModel.setSearchUsers(sbUser.text.toString())
+                    showLoading(true)
+                } else {
+                    mainViewModel.setSearchUsers()
+                }
+                false
+            }
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
