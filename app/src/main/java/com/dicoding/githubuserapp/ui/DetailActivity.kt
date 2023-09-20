@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.dicoding.githubuserapp.R
@@ -30,15 +29,16 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        detailViewModel.detailUser.observe(this) {detailUser ->
-            setDetailUser(detailUser)
-        }
-
         detailViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
+        detailViewModel.detailUser.observe(this) {detailUser ->
+            setDetailUser(detailUser)
+        }
+
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        sectionsPagerAdapter.username = user.toString()
         val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs

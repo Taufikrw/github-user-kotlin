@@ -1,6 +1,5 @@
 package com.dicoding.githubuserapp.ui
 
-import android.content.ClipData.Item
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
