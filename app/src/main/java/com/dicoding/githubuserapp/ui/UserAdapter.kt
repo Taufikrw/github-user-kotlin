@@ -1,6 +1,7 @@
 package com.dicoding.githubuserapp.ui
 
 import android.content.ClipData.Item
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -29,6 +30,11 @@ class UserAdapter: ListAdapter<ItemsItem, UserAdapter.ViewHolder>(DIFF_CALLBACK)
     override fun onBindViewHolder(holder: UserAdapter.ViewHolder, position: Int) {
         val user = getItem(position)
         holder.bind(user)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.USER_DATA, user.login)
+            holder.itemView.context.startActivities(arrayOf(intent))
+        }
     }
 
     companion object {
