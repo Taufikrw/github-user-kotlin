@@ -1,6 +1,7 @@
 package com.dicoding.githubuserapp.ui
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,13 +18,10 @@ class DetailViewModel: ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    companion object {
-        private const val TAG = "DetailViewModel"
-    }
-
     init {
         setDetailUser()
     }
+
     fun setDetailUser(username: String = "") {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getDetailUser(username)
@@ -46,5 +44,9 @@ class DetailViewModel: ViewModel() {
             }
 
         })
+    }
+
+    companion object {
+        private const val TAG = "DetailViewModel"
     }
 }

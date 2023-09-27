@@ -16,9 +16,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val detailViewModel by viewModels<DetailViewModel>()
 
-    companion object {
-        const val USER_DATA = "user_data"
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -46,7 +43,6 @@ class DetailActivity : AppCompatActivity() {
             tab.text = if (position == 0) "Followers" else "Following"
         }.attach()
     }
-
     private fun setDetailUser(detailUser: DetailUserResponse) {
         binding.tvUsername.text = detailUser.login
         binding.name.text = detailUser.name
@@ -59,5 +55,9 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    companion object {
+        const val USER_DATA = "user_data"
     }
 }

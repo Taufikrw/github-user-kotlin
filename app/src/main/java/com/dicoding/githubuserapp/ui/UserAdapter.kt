@@ -11,7 +11,7 @@ import com.dicoding.githubuserapp.data.response.ItemsItem
 import com.dicoding.githubuserapp.databinding.ItemUserBinding
 
 class UserAdapter: ListAdapter<ItemsItem, UserAdapter.ViewHolder>(DIFF_CALLBACK) {
-    class ViewHolder(val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(user: ItemsItem) {
             binding.tvUsername.text = user.login
             binding.tvUrl.text = user.htmlUrl
