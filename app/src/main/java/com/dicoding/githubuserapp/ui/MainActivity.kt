@@ -1,11 +1,14 @@
 package com.dicoding.githubuserapp.ui
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.githubuserapp.R
 import com.dicoding.githubuserapp.data.response.ItemsItem
 import com.dicoding.githubuserapp.databinding.ActivityMainBinding
 
@@ -35,6 +38,17 @@ class MainActivity : AppCompatActivity() {
 
         with(binding) {
             svUser.setupWithSearchBar(sbUser)
+            sbUser.inflateMenu(R.menu.option_menu)
+            sbUser.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.menu1 -> {
+                        val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    else -> false
+                }
+            }
             svUser.editText.setOnEditorActionListener { textView, actionId, event ->
                 sbUser.text = svUser.text
                 svUser.hide()

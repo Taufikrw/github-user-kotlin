@@ -58,6 +58,8 @@ class DetailViewModel(private val userRepository: UserRepository): ViewModel() {
         userRepository.deleteUser(username)
     }
 
+    fun getFavoriteUser() = userRepository.getFavoriteUser()
+
     companion object {
         private const val TAG = "DetailViewModel"
     }
