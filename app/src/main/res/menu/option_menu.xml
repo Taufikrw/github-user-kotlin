@@ -4,9 +4,9 @@
     <group android:menuCategory="container">
         <item
             android:id="@+id/menu1"
-            android:icon="@drawable/ic_wishlisted"
+            android:icon="@drawable/ic_favorite"
             android:title="@string/favorite_user"
-            app:showAsAction="ifRoom" />
+            app:showAsAction="always" />
         <item
             android:id="@+id/menu2"
             android:title="@string/setting"

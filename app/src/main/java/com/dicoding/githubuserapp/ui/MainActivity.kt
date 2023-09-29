@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.githubuserapp.R
 import com.dicoding.githubuserapp.data.response.ItemsItem
 import com.dicoding.githubuserapp.databinding.ActivityMainBinding
+import com.dicoding.githubuserapp.utils.SettingPreferences
+import com.dicoding.githubuserapp.utils.dataStore
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -22,6 +26,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        val settingViewModel = ViewModelProvider(this, SettingViewModelFactory(pref)).get(
+            SettingViewModel::class.java
+        )
+        settingViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvUsers.layoutManager = layoutManager
@@ -42,10 +58,17 @@ class MainActivity : AppCompatActivity() {
             sbUser.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.menu1 -> {
-                        val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
-                        startActivity(intent)
+                        val favIntent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                        startActivity(favIntent)
                         true
                     }
+
+                    R.id.menu2 -> {
+                        val setIntent = Intent(this@MainActivity, SettingActivity::class.java)
+                        startActivity(setIntent)
+                        true
+                    }
+
                     else -> false
                 }
             }
