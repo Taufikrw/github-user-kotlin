@@ -2,16 +2,13 @@ package com.dicoding.githubuserapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.dicoding.githubuserapp.R
-import com.dicoding.githubuserapp.data.Result
 import com.dicoding.githubuserapp.data.response.DetailUserResponse
-import com.dicoding.githubuserapp.database.Favorite
 import com.dicoding.githubuserapp.databinding.ActivityDetailBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

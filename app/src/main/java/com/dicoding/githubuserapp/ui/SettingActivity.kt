@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.githubuserapp.R
 import com.dicoding.githubuserapp.databinding.ActivitySettingBinding
 import com.dicoding.githubuserapp.utils.SettingPreferences
 import com.dicoding.githubuserapp.utils.dataStore

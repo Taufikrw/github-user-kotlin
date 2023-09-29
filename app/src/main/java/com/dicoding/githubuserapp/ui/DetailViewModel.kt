@@ -1,14 +1,12 @@
 package com.dicoding.githubuserapp.ui
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.githubuserapp.data.repository.UserRepository
 import com.dicoding.githubuserapp.data.response.DetailUserResponse
 import com.dicoding.githubuserapp.data.retrofit.ApiConfig
-import com.dicoding.githubuserapp.database.Favorite
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

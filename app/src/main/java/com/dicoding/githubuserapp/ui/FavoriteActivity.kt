@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.githubuserapp.R
 import com.dicoding.githubuserapp.data.response.ItemsItem
 import com.dicoding.githubuserapp.databinding.ActivityFavoriteBinding
 
