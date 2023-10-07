@@ -1,5 +1,6 @@
 package com.dicoding.githubuserapp.data.retrofit
 
+import com.dicoding.githubuserapp.BuildConfig
 import com.dicoding.githubuserapp.data.response.DetailUserResponse
 import com.dicoding.githubuserapp.data.response.GithubResponse
 import com.dicoding.githubuserapp.data.response.ItemsItem
@@ -11,28 +12,28 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("search/users")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token ${BuildConfig.KEY}")
     fun getGithubUsers(
         @Query("q")
         query: String
     ): Call<GithubResponse>
 
     @GET("users/{username}")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token ${BuildConfig.KEY}")
     fun getDetailUser(
         @Path("username")
         username: String
     ): Call<DetailUserResponse>
 
     @GET("users/{username}/followers")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token ${BuildConfig.KEY}")
     fun getFollowers(
         @Path("username")
         username: String
     ): Call<List<ItemsItem>>
 
     @GET("users/{username}/following")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token ${BuildConfig.KEY}")
     fun getFollowing(
         @Path("username")
         username: String
